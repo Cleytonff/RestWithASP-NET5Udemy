@@ -35,6 +35,7 @@ namespace RestWithASP_NET5Udemy
 
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
 
+            services.AddApiVersioning();
 
             services.AddScoped<IPersonService, PersonServiceImplementation>();
         }
