@@ -1,19 +1,20 @@
 ﻿using RestWithASP_NET5Udemy.Model;
 using RestWithASP_NET5Udemy.Model.Context;
+using RestWithASP_NET5Udemy.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestWithASP_NET5Udemy.Services.Implementations
+namespace RestWithASP_NET5Udemy.Repository.Implementations
 {
-    public class PersonServiceImplementation : IPersonService
+    public class PersonRepositoryImplementation : IPersonRepository
 
     {
         private MySQLContext _context;
 
-        public PersonServiceImplementation(MySQLContext context)
+        public PersonRepositoryImplementation(MySQLContext context)
         {
             _context = context;
         }
@@ -87,7 +88,7 @@ namespace RestWithASP_NET5Udemy.Services.Implementations
             return person;
         }
 
-        private bool Exists(long id)
+        public bool Exists(long id)
         {
             return _context.Persons.Any(p => p.Id.Equals(id));
         }
