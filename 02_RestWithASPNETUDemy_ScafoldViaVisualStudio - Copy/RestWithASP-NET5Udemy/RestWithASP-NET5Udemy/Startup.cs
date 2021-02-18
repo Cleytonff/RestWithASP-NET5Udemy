@@ -8,7 +8,7 @@ using RestWithASP_NET5Udemy.Business;
 using RestWithASP_NET5Udemy.Business.Implementations;
 using RestWithASP_NET5Udemy.Model.Context;
 using RestWithASP_NET5Udemy.Repository;
-using RestWithASP_NET5Udemy.Repository.Implementations;
+using RestWithASP_NET5Udemy.Repository.Generic;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -49,10 +49,10 @@ namespace RestWithASP_NET5Udemy
             services.AddApiVersioning();
 
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
-            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
+            //services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
 
             services.AddScoped<IBookBusiness, BookBusinessImplementation>();
-            services.AddScoped<IBookRepository, BookRepositoryImplementation>();
+            services.AddScoped(typeof(IRepository<>),typeof(GenericRepository<>));
         }
 
        
